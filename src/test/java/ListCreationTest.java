@@ -1,5 +1,9 @@
 import bo.ListCreationParameters;
+import browser.Browser;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import po.ListCreationPage;
 import po.ListsPage;
@@ -9,8 +13,8 @@ import utils.Context;
 import utils.YamlLoader;
 
 public class ListCreationTest extends AbstractTest {
-    @Test(description = "List creation")
-    public void listCreationTest() {
+    @Test(description = "List creation",dataProvider = "dataProvider")
+    public void listCreationTest(ListCreationParameters listCreationParameters) {
 //        ListCreationParameters listCreationParametersBuilder = ListCreationParametersBuilder.builder()
 //                .withType("All")
 //                .withGeography("Alaska")
@@ -18,7 +22,8 @@ public class ListCreationTest extends AbstractTest {
 //                .withUltParentPID()
 //                .build();
 
-        ListCreationParameters listCreationParameters = YamlLoader.loadFromFile("src/test/resources/listCreationConfigs/1.yml");
+//        ListCreationParameters listCreationParameters = YamlLoader.loadFromFile("src/test/resources/listCreationConfigs/1.yml");
+
         LoginPage loginPage = new LoginPage().open();
         MainPage mainPage = loginPage.fillEmail("testing-dev-alex@yopmail.com").fillPassword("Alex2030").clickSignIn();
         ListCreationPage listCreationPage = new MainPage().openListsTab().openListCreator();
@@ -39,15 +44,23 @@ public class ListCreationTest extends AbstractTest {
                 .clickActivate()
                 .clickYesActivate();
         String status = new ListsPage()
-                .waitUntilActiveStatus(Context.getListName())
+//                .waitUntilActiveStatus(Context.getListName())
                 .getListStatus(Context.getListName());
-        Assert.assertTrue(status.contains("Active"));
+//        Assert.assertTrue(status.contains("Active"));
     }
 
-//    @DataProvider(name = "data-provider")
-//    public Object[][] dataProvider() {
-//        return new Object[][]{
-//                //get objects from file(s)
-//        };
-//    }
+    @DataProvider
+    public static Object[][] dataProvider() {
+        return new Object[][]{
+                {YamlLoader.loadFromFile("src/test/resources/listCreationConfigs/1.yml")},
+                {YamlLoader.loadFromFile("src/test/resources/listCreationConfigs/2.yml")},
+                {YamlLoader.loadFromFile("src/test/resources/listCreationConfigs/3.yml")}
+        };
+    }
+
+    @AfterMethod
+    public void killBrowser() {
+        Browser.kill();
+        Context.clear();
+    }
 }

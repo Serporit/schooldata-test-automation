@@ -47,6 +47,7 @@ dependencies {
 
 test {
     testLogging.showStandardStreams = true
+    scanForTestClasses = false
     useTestNG() {
         suites 'src/test/resources/testng.xml'
     }

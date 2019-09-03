@@ -13,7 +13,7 @@ public class YamlLoader {
         Yaml yaml = new Yaml();
         yaml.setBeanAccess(BeanAccess.FIELD);
         try {
-            return yaml.load(new FileInputStream("src/test/resources/listCreationConfigs/1.yml"));
+            return yaml.load(new FileInputStream(path));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

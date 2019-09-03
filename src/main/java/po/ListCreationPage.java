@@ -55,11 +55,13 @@ public class ListCreationPage extends MainPage {
     }
 
     public ListCreationPage setInstTypes(String instType) {
+        By instTypesTabLocator = By.xpath("//span[@data-e2e='targeting-name' and contains(text(),'Institution Types')]/../..");
         if (instType != null && !instType.isEmpty()) {
-            browser.click(By.xpath("//span[contains(text(),'" + instType + "')]"));
+            By instTypeLocator = By.xpath("//span[contains(text(),'" + instType + "')]");
+            browser.waitForElementEnabled(instTypeLocator);
+            browser.clickThrough(instTypeLocator);
             waitForSavingChanges();
         }
-        By instTypesTabLocator = By.xpath("//span[@data-e2e='targeting-name' and contains(text(),'Institution Types')]/../..");
         browser.scrollUpTo(instTypesTabLocator);
         browser.clickThrough(instTypesTabLocator);
         return this;
