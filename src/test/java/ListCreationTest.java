@@ -1,7 +1,5 @@
 import bo.ListCreationParameters;
 import browser.Browser;
-import org.testng.Assert;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -15,15 +13,6 @@ import utils.YamlLoader;
 public class ListCreationTest extends AbstractTest {
     @Test(description = "List creation",dataProvider = "dataProvider")
     public void listCreationTest(ListCreationParameters listCreationParameters) {
-//        ListCreationParameters listCreationParametersBuilder = ListCreationParametersBuilder.builder()
-//                .withType("All")
-//                .withGeography("Alaska")
-//                .withPersonnel("Journalism")
-//                .withUltParentPID()
-//                .build();
-
-//        ListCreationParameters listCreationParameters = YamlLoader.loadFromFile("src/test/resources/listCreationConfigs/1.yml");
-
         LoginPage loginPage = new LoginPage().open();
         MainPage mainPage = loginPage.fillEmail("testing-dev-alex@yopmail.com").fillPassword("Alex2030").clickSignIn();
         ListCreationPage listCreationPage = new MainPage().openListsTab().openListCreator();
@@ -51,11 +40,7 @@ public class ListCreationTest extends AbstractTest {
 
     @DataProvider
     public static Object[][] dataProvider() {
-        return new Object[][]{
-                {YamlLoader.loadFromFile("src/test/resources/listCreationConfigs/1.yml")},
-                {YamlLoader.loadFromFile("src/test/resources/listCreationConfigs/2.yml")},
-                {YamlLoader.loadFromFile("src/test/resources/listCreationConfigs/3.yml")}
-        };
+        return YamlLoader.loadLcpArrayFromDir("src/test/resources/listCreationConfigs");
     }
 
     @AfterMethod

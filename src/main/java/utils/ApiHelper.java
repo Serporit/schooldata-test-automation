@@ -17,7 +17,7 @@ public class ApiHelper {
         HttpClient client = HttpClientBuilder.create().build();
         HttpGet request = new HttpGet(url);
         request.addHeader("content-type", "application/json");
-        request.addHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUxMTI3MywiaXNzIjoiaHR0cDovL2VjMi0zNC0yMDAtMjI4LTIzNy5jb21wdXRlLTEuYW1hem9uYXdzLmNvbS9hcGkvdjEvYXV0aC9sb2dpbiIsImlhdCI6MTU2NzQyMjc4OSwiZXhwIjoxNTY3NTA5MTg5LCJuYmYiOjE1Njc0MjI3ODksImp0aSI6IkdDYWs2M3JnVThnNVdvY0QifQ.zeG5w1450gE7tqaykT0B778DnHQN02zQc-eKeq6dKzI");
+        request.addHeader("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjUxMTI3MywiaXNzIjoiaHR0cDovL2VjMi0zNC0yMDAtMjI4LTIzNy5jb21wdXRlLTEuYW1hem9uYXdzLmNvbS9hcGkvdjEvYXV0aC9sb2dpbiIsImlhdCI6MTU2NzU0Mzk3NCwiZXhwIjoxNTY3NjMwMzc0LCJuYmYiOjE1Njc1NDM5NzQsImp0aSI6ImF0WHRrNGkzWnV6bFQ4MDMifQ.kysfU8CPyhdK_b19dh7FT65ZpqdLwfF1zrpdA10GGC0");
         HttpResponse response = null;
         String result = null;
         try {

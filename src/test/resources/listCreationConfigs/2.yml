@@ -1,11 +1,5 @@
 !!bo.ListCreationParameters
-type: Email
-#institutionOnly: false
-institutionTypes: Private Schools
-geography: Texas
-#personnel: Journalism
-#names: 77772
-#parentPid: true
-#parentInst: true
-#ultParentPid: false
-ultParentInst: true
+type: All
+geography: Alaska
+personnel: Journalism
+parentPid: true

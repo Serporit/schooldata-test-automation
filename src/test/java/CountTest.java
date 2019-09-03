@@ -31,19 +31,19 @@ public class CountTest extends AbstractTest {
         Assert.assertTrue(collegesCountFromUi == collegesCountFromApi && collegesCountFromApi == collegesCountFromDb);
     }
 
-    @Test(dataProvider = "provideData")
-    public void test(int i1, int i2) {
-        System.out.println(i1);
-        System.out.println(i2);
-        Assert.assertEquals(i1 + 10, i2);
-    }
-
-        @DataProvider(name = "provideNumbers")
-        public Object[][] provideData() {
-            return new Object[][]{
-                    {10, 20},
-                    {100, 110},
-                    {200, 210}
-            };
-        }
+//    @Test(dataProvider = "provideData")
+//    public void test(int i1, int i2) {
+//        System.out.println(i1);
+//        System.out.println(i2);
+//        Assert.assertEquals(i1 + 10, i2);
+//    }
+//
+//        @DataProvider(name = "provideNumbers")
+//        public Object[][] provideData() {
+//            return new Object[][]{
+//                    {10, 20},
+//                    {100, 110},
+//                    {200, 210}
+//            };
+//        }
 }
