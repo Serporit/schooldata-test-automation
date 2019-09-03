@@ -83,7 +83,6 @@ public class ListCreationPage extends MainPage {
     public boolean setCityOnly() {
         By geographyTabLocator = By.xpath("//span[@data-e2e='targeting-name' and contains(text(),'Geography')]/../..");
         browser.click(geographyTabLocator);
-//        browser.forceMoveElementForward(By.xpath("//div[@class='geo-tag']"));
         browser.waitForElementEnabled(By.xpath("//div[@class='geo-tag']"));
         browser.click(By.xpath("//div[@class='geo-tag']"));
         browser.click(By.xpath("//span[@class='action']"));
@@ -97,7 +96,6 @@ public class ListCreationPage extends MainPage {
         boolean changed = false;
         if (geography != null && !geography.isEmpty()) {
             By geoTabLocator = By.xpath("//span[@data-e2e='targeting-name' and contains(text(),'Geography')]/../..");
-//            browser.click(geoTabLocator);
             browser.type(By.xpath("//input[contains(@placeholder,'Search by ')]"), geography);
             browser.click(By.xpath("(//li//*[contains(@class,'suggestion')])[1]"));
             changed = waitForSavingChanges();
