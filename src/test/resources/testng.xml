@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestAll">
+    <test name="smoke">
+        <classes>
+            <class name="SmokeTest" />
+        </classes>
+    </test>
+    <test name="listCreation">
+        <classes>
+            <class name="ListCreationTest" />
+        </classes>
+    </test>
+    <test name="count">
+        <classes>
+            <class name="CountTest" />
+        </classes>
+    </test>
+</suite>
