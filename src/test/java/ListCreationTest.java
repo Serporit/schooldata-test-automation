@@ -6,18 +6,19 @@ import po.ListsPage;
 import po.LoginPage;
 import po.MainPage;
 import utils.Context;
+import utils.YamlLoader;
 
 public class ListCreationTest extends AbstractTest {
-    @Test(description = "List creation", groups = "creation")
+    @Test(description = "List creation")
     public void listCreationTest() {
-        ListCreationParameters listCreationParameters = ListCreationParameters.builder()
-                .withType("All")
-                .withGeography("Alaska")
-                .withPersonnel("Journalism")
-                .withUltParentPID()
-                .build();
+//        ListCreationParameters listCreationParametersBuilder = ListCreationParametersBuilder.builder()
+//                .withType("All")
+//                .withGeography("Alaska")
+//                .withPersonnel("Journalism")
+//                .withUltParentPID()
+//                .build();
 
-
+        ListCreationParameters listCreationParameters = YamlLoader.loadFromFile("src/test/resources/listCreationConfigs/1.yml");
         LoginPage loginPage = new LoginPage().open();
         MainPage mainPage = loginPage.fillEmail("testing-dev-alex@yopmail.com").fillPassword("Alex2030").clickSignIn();
         ListCreationPage listCreationPage = new MainPage().openListsTab().openListCreator();

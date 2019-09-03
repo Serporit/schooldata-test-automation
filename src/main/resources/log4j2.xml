@@ -7,7 +7,7 @@
         </Console>
         <ReportPortalLog4j2Appender name="ReportPortalAppender">
             <PatternLayout
-                    pattern="[%d{HH:mm:ss}] %-5p (%F) - %m%n"/>
+                    pattern="[%d{HH:mm:ss}] %-5p > %m%n"/>
         </ReportPortalLog4j2Appender>
     </Appenders>
     <Loggers>

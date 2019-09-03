@@ -1,11 +1,12 @@
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import po.*;
 import utils.ApiHelper;
 import utils.DbHelper;
 
 public class CountTest extends AbstractTest {
-    @Test(description = "Verify that count from UI, API and DB query are identical", groups = "count")
+    @Test(description = "Verify that count from UI, API and DB query are identical")
     public void countTest() {
         String searchQuery = "Alaska";
 
@@ -29,4 +30,20 @@ public class CountTest extends AbstractTest {
         Assert.assertTrue(schoolsCountFromUi == schoolsCountFromApi && schoolsCountFromApi == schoolsCountFromDb);
         Assert.assertTrue(collegesCountFromUi == collegesCountFromApi && collegesCountFromApi == collegesCountFromDb);
     }
+
+    @Test(dataProvider = "provideData")
+    public void test(int i1, int i2) {
+        System.out.println(i1);
+        System.out.println(i2);
+        Assert.assertEquals(i1 + 10, i2);
+    }
+
+        @DataProvider(name = "provideNumbers")
+        public Object[][] provideData() {
+            return new Object[][]{
+                    {10, 20},
+                    {100, 110},
+                    {200, 210}
+            };
+        }
 }

@@ -1,14 +1,11 @@
-#ListCreationParameters:
-type: all
-institutionOnly: false
-institutionTypes:
-  qwe1
-  qwe2
-  qwe3
+!!bo.ListCreationParameters
+type: All
+#institutionOnly: false
+#institutionTypes:
 geography: Alaska
 personnel: Journalism
-names: 77772
+#names: 77772
 parentPid: true
-parentInst: true
-ultParentPid: false
-ultParentInst: false
+#parentInst: true
+#ultParentPid: false
+#ultParentInst: false
