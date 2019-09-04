@@ -1,7 +1,10 @@
 import bo.ListCreationParameters;
 import browser.Browser;
+import com.epam.reportportal.testng.ReportPortalTestNGListener;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import po.ListCreationPage;
 import po.ListsPage;
@@ -10,8 +13,9 @@ import po.MainPage;
 import utils.Context;
 import utils.YamlLoader;
 
-public class ListCreationTest extends AbstractTest {
-    @Test(description = "List creation",dataProvider = "dataProvider")
+@Listeners({ReportPortalTestNGListener.class})
+public class ListCreationTest {
+    @Test(description = "List creation", dataProvider = "dataProvider")
     public void listCreationTest(ListCreationParameters listCreationParameters) {
         LoginPage loginPage = new LoginPage().open();
         MainPage mainPage = loginPage.fillEmail("testing-dev-alex@yopmail.com").fillPassword("Alex2030").clickSignIn();
@@ -44,7 +48,10 @@ public class ListCreationTest extends AbstractTest {
     }
 
     @AfterMethod
-    public void killBrowser() {
+    public void teardown(ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            Browser.getInstance().takeScreenshot();
+        }
         Browser.kill();
         Context.clear();
     }

@@ -25,10 +25,8 @@ dependencies {
     compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.0'
     compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.9'
     compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.17'
-    compile group: 'info.cukes', name: 'cucumber-java', version: '1.2.5'
     compile group: 'commons-lang', name: 'commons-lang', version: '2.6'
     compile group: 'org.yaml', name: 'snakeyaml', version: '1.25'
-
 
     compile 'com.epam.reportportal:client-java:4.0.10'
     compile 'com.epam.reportportal:logger-java-log4j:4.0.1'
@@ -36,13 +34,13 @@ dependencies {
     compile 'com.epam.reportportal:agent-java-testng:4.2.1'
     compile 'com.epam.reportportal:agent-java-cucumber:4.0.2'
     compile 'org.slf4j:slf4j-simple:1.6.1'
+}
 
-    compile "info.cukes:cucumber-java:${cucumberVersion}"
-    compile "info.cukes:cucumber-junit:${cucumberVersion}"
-    compile 'info.cukes:gherkin:2.12.2'
-    compile group: 'info.cukes', name: 'cucumber-junit', version: '1.1.2'
-
-
+clean {
+    delete "target"
+    delete "build"
+    delete "out"
+    delete "screenshots"
 }
 
 test {

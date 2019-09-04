@@ -233,6 +233,7 @@ public class Browser {
 
 
     public static void kill() {
+        Logger.debug("Killing browser");
         if (instance != null) {
             try {
                 instance.driver.quit();
