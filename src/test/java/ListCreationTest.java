@@ -1,6 +1,7 @@
 import bo.ListCreationParameters;
 import browser.Browser;
 import com.epam.reportportal.testng.ReportPortalTestNGListener;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
@@ -37,9 +38,9 @@ public class ListCreationTest {
                 .clickActivate()
                 .clickYesActivate();
         String status = new ListsPage()
-//                .waitUntilActiveStatus(Context.getListName())
+                .waitUntilActiveStatus(Context.getListName())
                 .getListStatus(Context.getListName());
-//        Assert.assertTrue(status.contains("Active"));
+        Assert.assertTrue(status.contains("Active"));
     }
 
     @DataProvider
